@@ -3,6 +3,8 @@ rvm:
   - 2.0.0
 before_install:
   - cd web-client
-  - npm install yo grunt bower karma
+before_script:
+  - 'npm install -g bower grunt-cli'
+  - 'bower install'
 script:
   - grunt test
