@@ -1,0 +1,10 @@
+language: ruby
+rvm:
+  - 2.0.0
+before_install:
+  - cd web-client
+  - npm install yo
+before_script:
+  - npm install karma
+script:
+  - grunt test
