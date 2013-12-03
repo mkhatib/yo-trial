@@ -16,12 +16,11 @@ before_install:
 before_script:
   - "psql -c 'create database yo_test;' -U postgres"
   - 'rake db:migrate'
-  - 'npm install'
-  - 'sh -e /etc/init.d/xvfb start'
   - "cd ../web-client"
   - 'npm install -g bower grunt-cli grunt'
   - 'npm install grunt --save-dev'
   - 'npm install'
+  - 'sh -e /etc/init.d/xvfb start'
   - 'bower install'
 script:
   - 'cd ../web-client && grunt test'
