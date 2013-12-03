@@ -4,10 +4,11 @@ env:
 rvm:
   - 2.0.0
 before_install:
+  - "cd backend"
   - "sudo apt-get update -qq"
   - "sudo apt-get install -qq nodejs"
 before_script:
-  - "cd web-client"
+  - "cd ../web-client"
   - 'npm install -g bower grunt-cli grunt'
   - 'npm install grunt --save-dev'
   - 'npm install'
