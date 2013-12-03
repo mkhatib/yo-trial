@@ -8,16 +8,17 @@ before_install:
   - "sudo apt-get update -qq"
   - "sudo apt-get install -qq nodejs"
 before_script:
+  - 'gem uninstall rake --version 0.9.6'
+  - 'bundle update rake'
+  - "psql -c 'create database manshar_test;' -U postgres"
+  - 'rake db:migrate'
+  - 'npm install'
+  - 'sh -e /etc/init.d/xvfb start'
   - "cd ../web-client"
   - 'npm install -g bower grunt-cli grunt'
   - 'npm install grunt --save-dev'
   - 'npm install'
   - 'bower install'
-  - 'cd ../backend'
-  - "psql -c 'create database manshar_test;' -U postgres"
-  - 'rake db:migrate'
-  - 'npm install'
-  - 'sh -e /etc/init.d/xvfb start'
 script:
   - 'cd ../web-client && grunt test'
   - 'cd ../backend && bundle exec rspec && bundle exec teaspoon'
