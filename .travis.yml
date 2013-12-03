@@ -5,6 +5,8 @@ before_install:
   - cd web-client
 before_script:
   - 'npm install -g bower grunt-cli grunt'
+  - 'npm install grunt --save-dev'
+  - 'npm install'
   - 'bower install'
 script:
   - grunt test
