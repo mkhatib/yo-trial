@@ -13,7 +13,6 @@ before_script:
   - 'npm install'
   - 'bower install'
   - 'cd ../backend'
-  - 'cp config/database.yml.sample config/database.yml'
   - "psql -c 'create database manshar_test;' -U postgres"
   - 'rake db:migrate'
   - 'npm install'
