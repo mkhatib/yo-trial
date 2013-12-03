@@ -17,6 +17,7 @@ before_script:
   - "psql -c 'create database yo_test;' -U postgres"
   - 'rake db:migrate'
   - "cd ../web-client"
+  - 'npm install grunt --save-dev'
   - 'npm install'
   - 'sh -e /etc/init.d/xvfb start'
 script:
