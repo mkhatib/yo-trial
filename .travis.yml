@@ -14,8 +14,6 @@ before_install:
   - "sudo apt-get update -qq"
   - "sudo apt-get install -qq nodejs"
 before_script:
-  - 'bundle update rake'
-  - 'bundle exec'
   - "psql -c 'create database manshar_test;' -U postgres"
   - 'rake db:migrate'
   - 'npm install'
