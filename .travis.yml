@@ -2,7 +2,9 @@ language: ruby
 rvm:
   - 2.0.0
 before_install:
-  - cd web-client
+  - "cd web-client"
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
 before_script:
   - 'npm install -g bower grunt-cli grunt'
   - 'npm install grunt --save-dev'
