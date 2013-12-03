@@ -17,11 +17,8 @@ before_script:
   - "psql -c 'create database yo_test;' -U postgres"
   - 'rake db:migrate'
   - "cd ../web-client"
-  - 'npm install -g bower grunt-cli grunt'
-  - 'npm install grunt --save-dev'
   - 'npm install'
   - 'sh -e /etc/init.d/xvfb start'
-  - 'bower install'
 script:
   - 'cd ../web-client && grunt test'
   - 'cd ../backend && bundle exec rspec && bundle exec teaspoon'
