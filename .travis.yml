@@ -19,6 +19,7 @@ before_script:
   - "cd ../web-client"
   - 'npm install grunt --save-dev'
   - 'npm install'
+  - 'bower install'
   - 'sh -e /etc/init.d/xvfb start'
 script:
   - 'cd ../web-client && grunt test'
