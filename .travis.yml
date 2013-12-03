@@ -14,7 +14,7 @@ before_install:
   - "sudo apt-get update -qq"
   - "sudo apt-get install -qq nodejs"
 before_script:
-  - "psql -c 'create database manshar_test;' -U postgres"
+  - "psql -c 'create database yo_test;' -U postgres"
   - 'rake db:migrate'
   - 'npm install'
   - 'sh -e /etc/init.d/xvfb start'
