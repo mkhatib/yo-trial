@@ -1,30 +1,43 @@
 language: ruby
 env:
+  matrix:
   - DISPLAY=:99.0
+  global:
+    secure: arVlbmxywQrWCUd9U5cO9lG+qZBXlD01fUG8U1w1DIjEFnaHzyYVEO4PWOWzLGmf2Vmv9OSvL3rhig8sibXaGvT+a1OksrLEApkk3wGvP2shTn8+8KCcEWhuhyZk5QQpfyWmMO4lGfZv1/iXZ9BcRceoEdF+jhpbQstLaL3Q7ZQ=
 rvm:
-  - 1.9.3
-  - 2.0.0
-  - ruby-head
-  - jruby-19mode
+- 1.9.3
+- 2.0.0
+- ruby-head
+- jruby-19mode
 jdk:
-  - oraclejdk7
-  - openjdk7
+- oraclejdk7
+- openjdk7
 before_install:
-  - "cd backend"
-  - "sudo apt-get update -qq"
-  - "sudo apt-get install -qq nodejs"
+- cd backend
+- sudo apt-get update -qq
+- sudo apt-get install -qq nodejs
 before_script:
-  - "psql -c 'create database yo_test;' -U postgres"
-  - 'rake db:migrate'
-  - "cd ../web-client"
-  - 'npm install grunt --save-dev'
-  - 'npm install'
-  - 'bower install'
-  - 'sh -e /etc/init.d/xvfb start'
+- psql -c 'create database yo_test;' -U postgres
+- rake db:migrate
+- cd ../web-client
+- npm install grunt --save-dev
+- npm install
+- bower install
+- sh -e /etc/init.d/xvfb start
 script:
-  - 'cd ../web-client && grunt test'
-  - 'cd ../backend && bundle exec rspec && bundle exec teaspoon'
+- cd ../web-client && grunt test
+- cd ../backend && bundle exec rspec && bundle exec teaspoon
 matrix:
   allow_failures:
-    - rvm: jruby-19mode
-    - rvm: ruby-head
+  - rvm: jruby-19mode
+  - rvm: ruby-head
+after_success:
+  - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+  - git remote add web-client-heroku git@heroku.com:yo-trial-web-client.git
+  - echo "Host heroku.com" >> ~/.ssh/config
+  - echo "   StrictHostKeyChecking no" >> ~/.ssh/config
+  - echo "   CheckHostIP no" >> ~/.ssh/config
+  - echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
+  - heroku keys:clear
+  - yes | heroku keys:add
+  - yes | git subtree push --prefix web-client/dist web-client-heroku master
