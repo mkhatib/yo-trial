@@ -14,6 +14,7 @@ jdk:
 - openjdk7
 before_install:
 - cd backend
+- sudo apt-get install git-core
 - sudo apt-get update -qq
 - sudo apt-get install -qq nodejs
 before_script:
@@ -32,6 +33,7 @@ matrix:
   - rvm: jruby-19mode
   - rvm: ruby-head
 after_success:
+  - git --version
   - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
   - git remote add web-client-heroku git@heroku.com:yo-trial-web-client.git
   - echo "Host heroku.com" >> ~/.ssh/config
