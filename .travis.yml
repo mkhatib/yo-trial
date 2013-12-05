@@ -22,22 +22,20 @@ before_install:
 - git clone https://github.com/git/git.git
 - cd git/contrib/subtree
 - make
-- sudo install -m 755 git-subtree /usr/lib/git-core
-- sudo chmod +x /usr/share/doc/git/contrib/subtree/git-subtree.sh
-- sudo ln -s /usr/share/doc/git/contrib/subtree/git-subtree.sh /usr/lib/git-core/git-subtree
+- sudo make install -m 755 git-subtree /usr/lib/git-core
 - cd ../../../backend
 - sudo apt-get update -qq
 - sudo apt-get install -qq nodejs
 before_script:
 - psql -c 'create database yo_test;' -U postgres
 - rake db:migrate
-- cd ../web-client
-- npm install grunt --save-dev
-- npm install
-- bower install
+- #cd ../web-client
+- #npm install grunt --save-dev
+- #npm install
+- #bower install
 - sh -e /etc/init.d/xvfb start
 script:
-- cd ../web-client && grunt test
+- #cd ../web-client && grunt test
 - cd ../backend && bundle exec rspec && bundle exec teaspoon
 matrix:
   allow_failures:
