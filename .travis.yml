@@ -13,17 +13,8 @@ jdk:
 - oraclejdk7
 - openjdk7
 before_install:
-- wget https://git-core.googlecode.com/files/git-1.8.5.1.tar.gz
-- tar -zxf git-1.8.5.1.tar.gz
-- cd git-1.8.5.1
-- make prefix=/usr/local all
-- sudo make prefix=/usr/local install
-- cd ..
-- git clone https://github.com/git/git.git
-- cd git/contrib/subtree
-- make
-- sudo make install -m 755 git-subtree /usr/lib/git-core
-- cd ../../../backend
+- curl -L https://gist.github.com/haf/3426227/raw/b9a3037a319d31c8bd898760331c4e4c2824ddce/install-git.sh | bash
+- cd backend
 - sudo apt-get update -qq
 - sudo apt-get install -qq nodejs
 before_script:
