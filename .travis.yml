@@ -7,26 +7,25 @@ env:
 rvm:
 - 1.9.3
 before_install:
+- pwd
 - cd /usr/lib/git-core/
-- ls
 - sudo wget https://raw.github.com/apenwarr/git-subtree/master/git-subtree.sh
 - sudo mv git-subtree.sh git-subtree
 - sudo chmod 755 git-subtree
-- git subtree
-- cd
+- cd ~/mkhatib/yo-trial
 - cd backend
 - sudo apt-get update -qq
 - sudo apt-get install -qq nodejs
 before_script:
 - psql -c 'create database yo_test;' -U postgres
 - rake db:migrate
-- #cd ../web-client
-- #npm install grunt --save-dev
-- #npm install
-- #bower install
+- cd ../web-client
+- npm install grunt --save-dev
+- npm install
+- bower install
 - sh -e /etc/init.d/xvfb start
 script:
-- #cd ../web-client && grunt test
+- cd ../web-client && grunt test
 - cd ../backend && bundle exec rspec && bundle exec teaspoon
 matrix:
   allow_failures:
@@ -35,12 +34,12 @@ matrix:
 after_success:
   - git --version
   - git subtree
-  - # wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
-  - # git remote add web-client-heroku git@heroku.com:yo-trial-web-client.git
-  - # echo "Host heroku.com" >> ~/.ssh/config
-  - # echo "   StrictHostKeyChecking no" >> ~/.ssh/config
-  - # echo "   CheckHostIP no" >> ~/.ssh/config
-  - # echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
+  - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+  - git remote add web-client-heroku git@heroku.com:yo-trial-web-client.git
+  - echo "Host heroku.com" >> ~/.ssh/config
+  - echo "   StrictHostKeyChecking no" >> ~/.ssh/config
+  - echo "   CheckHostIP no" >> ~/.ssh/config
+  - echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
   - # heroku keys:clear
   - # yes | heroku keys:add
   - # yes | git subtree push --prefix web-client/dist web-client-heroku master
