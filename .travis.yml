@@ -12,7 +12,7 @@ before_install:
 - sudo wget https://raw.github.com/apenwarr/git-subtree/master/git-subtree.sh
 - sudo mv git-subtree.sh git-subtree
 - sudo chmod 755 git-subtree
-- cd ~/mkhatib/yo-trial
+- cd /home/travis/build/mkhatib/yo-trial
 - cd backend
 - sudo apt-get update -qq
 - sudo apt-get install -qq nodejs
