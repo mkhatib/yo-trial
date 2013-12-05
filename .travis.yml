@@ -18,6 +18,7 @@ before_install:
 - cd git-1.8.5.1
 - make prefix=/usr/local all
 - sudo make prefix=/usr/local install
+- cd ..
 - git clone https://github.com/git/git.git
 - cd git/contrib/subtree
 - make
