@@ -23,7 +23,7 @@ before_install:
 - cd git/contrib/subtree
 - make
 - sudo install -m 755 git-subtree /usr/lib/git-core
-- cd ../backend
+- cd ../../../backend
 - sudo apt-get install git-core
 - sudo apt-get update -qq
 - sudo apt-get install -qq nodejs
