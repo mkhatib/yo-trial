@@ -9,9 +9,9 @@ rvm:
 before_install:
 - cd /usr/lib/git-core/
 - ls
-- # wget https://raw.github.com/apenwarr/git-subtree/master/git-subtree.sh
-- mv git-subtree.sh git-subtree
-- chmod 755 git-subtree
+- sudo wget https://raw.github.com/apenwarr/git-subtree/master/git-subtree.sh
+- sudo mv git-subtree.sh git-subtree
+- sudo chmod 755 git-subtree
 - git subtree
 - cd
 - cd backend
