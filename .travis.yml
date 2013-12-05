@@ -6,12 +6,6 @@ env:
     secure: arVlbmxywQrWCUd9U5cO9lG+qZBXlD01fUG8U1w1DIjEFnaHzyYVEO4PWOWzLGmf2Vmv9OSvL3rhig8sibXaGvT+a1OksrLEApkk3wGvP2shTn8+8KCcEWhuhyZk5QQpfyWmMO4lGfZv1/iXZ9BcRceoEdF+jhpbQstLaL3Q7ZQ=
 rvm:
 - 1.9.3
-- 2.0.0
-- ruby-head
-- jruby-19mode
-jdk:
-- oraclejdk7
-- openjdk7
 before_install:
 - curl -L https://gist.github.com/haf/3426227/raw/b9a3037a319d31c8bd898760331c4e4c2824ddce/install-git.sh | bash
 - cd backend
