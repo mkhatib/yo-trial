@@ -7,7 +7,14 @@ env:
 rvm:
 - 1.9.3
 before_install:
-- curl -L https://gist.github.com/haf/3426227/raw/b9a3037a319d31c8bd898760331c4e4c2824ddce/install-git.sh | bash
+- sudo add-apt-repository ppa:git-core/ppa && sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y install git git-man git-svn asciidoc
+- [ ! -e '~/src/git-core' ] && mkdir -p ~/src/git-core
+- cd ~/src/git-core && apt-get source git-core
+- cd ~/src/git-core/git-*/contrib/subtree/
+- ls
+- "[ -e '/usr/lib/git-core' ] && sed -i -e '/^libexecdir.*/ s|/libexec/|/lib/|' Makefile || echo '/usr/lib/git-core does not exist! Check that your libexec dir exists and reinstall git-subtree'"
+- sudo make prefix=/usr && sudo make prefix=/usr install && sudo make prefix=/usr install-doc
+- cd 
 - cd backend
 - sudo apt-get update -qq
 - sudo apt-get install -qq nodejs
