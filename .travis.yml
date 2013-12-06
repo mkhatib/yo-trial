@@ -7,6 +7,7 @@ env:
 rvm:
 - 1.9.3
 before_install:
+- echo $TRAVIS_BRANCH
 - pwd
 - cd /usr/lib/git-core/
 - sudo wget https://raw.github.com/apenwarr/git-subtree/master/git-subtree.sh
