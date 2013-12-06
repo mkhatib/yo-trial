@@ -34,7 +34,7 @@ matrix:
   - rvm: ruby-head
 after_success:
   - echo "$TRAVIS_BRANCH"
-  - if [[ "$TRAVIS_BRANCH" == "master" ]]
+  - if [[ "$TRAVIS_BRANCH" -e "master" ]]
   - then echo "On master. Deploying now..."
   - cd /home/travis/build/mkhatib/yo-trial
   - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
