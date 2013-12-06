@@ -34,8 +34,9 @@ matrix:
   - rvm: ruby-head
 after_success:
   - echo "$TRAVIS_BRANCH"
-  - if [[ "$TRAVIS_BRANCH" == "master" ]]
-  - then echo "On master. Deploying now..."
+  - if [[ "$TRAVIS_BRANCH" != "master" ]]; then echo "Not master. No Deploy to do."; exit 0
+  - else 
+  - echo "On master. Deploying now..."
   - cd /home/travis/build/mkhatib/yo-trial
   - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
   - git remote add web-client-heroku git@heroku.com:yo-trial-web-client.git
@@ -46,6 +47,4 @@ after_success:
   - heroku keys:clear
   - yes | heroku keys:add
   - yes | git subtree push --prefix web-client/dist web-client-heroku master  
-  - else
-  - echo "Not master. No Deploy to do."; exit 0
   - fi
