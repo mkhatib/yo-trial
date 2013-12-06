@@ -33,6 +33,7 @@ matrix:
   - rvm: jruby-19mode
   - rvm: ruby-head
 after_success:
+  - echo "$TRAVIS_BRANCH"
   - if [[ "$TRAVIS_BRANCH" != "master" ]]
   - then echo "Not master. No Deploy to do."; exit 0
   - else
