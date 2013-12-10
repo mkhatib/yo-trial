@@ -16,5 +16,5 @@ else
   echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
   heroku keys:clear
   yes | heroku keys:add
-  yes | git subtree push --prefix web-client/dist web-client-heroku master
+  yes | git push web-client-heroku `git subtree split --prefix web-client/dist master`:master --force
 fi
