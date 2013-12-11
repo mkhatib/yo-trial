@@ -4,7 +4,7 @@ env:
   - DISPLAY=:99.0
   global:
   - YO_HOME=/home/travis/build/mkhatib/yo-trial
-    secure: arVlbmxywQrWCUd9U5cO9lG+qZBXlD01fUG8U1w1DIjEFnaHzyYVEO4PWOWzLGmf2Vmv9OSvL3rhig8sibXaGvT+a1OksrLEApkk3wGvP2shTn8+8KCcEWhuhyZk5QQpfyWmMO4lGfZv1/iXZ9BcRceoEdF+jhpbQstLaL3Q7ZQ=
+  - secure: arVlbmxywQrWCUd9U5cO9lG+qZBXlD01fUG8U1w1DIjEFnaHzyYVEO4PWOWzLGmf2Vmv9OSvL3rhig8sibXaGvT+a1OksrLEApkk3wGvP2shTn8+8KCcEWhuhyZk5QQpfyWmMO4lGfZv1/iXZ9BcRceoEdF+jhpbQstLaL3Q7ZQ=
 rvm:
 - 1.9.3
 before_install:
