@@ -3,6 +3,7 @@ env:
   matrix:
   - DISPLAY=:99.0
   global:
+  - YO_HOME=/home/travis/build/mkhatib/yo-trial
     secure: arVlbmxywQrWCUd9U5cO9lG+qZBXlD01fUG8U1w1DIjEFnaHzyYVEO4PWOWzLGmf2Vmv9OSvL3rhig8sibXaGvT+a1OksrLEApkk3wGvP2shTn8+8KCcEWhuhyZk5QQpfyWmMO4lGfZv1/iXZ9BcRceoEdF+jhpbQstLaL3Q7ZQ=
 rvm:
 - 1.9.3
@@ -11,7 +12,7 @@ before_install:
 - sudo wget https://raw.github.com/apenwarr/git-subtree/master/git-subtree.sh
 - sudo mv git-subtree.sh git-subtree
 - sudo chmod 755 git-subtree
-- cd /home/travis/build/mkhatib/yo-trial
+- cd $YO_HOME
 - cd backend
 - sudo apt-get update -qq
 - sudo apt-get install -qq nodejs
@@ -31,5 +32,5 @@ matrix:
   - rvm: jruby-19mode
   - rvm: ruby-head
 after_success:
-  - cd /home/travis/build/mkhatib/yo-trial
+  - cd $YO_HOME
   - ./utils/travis/deploy.sh
