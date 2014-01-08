@@ -8,30 +8,24 @@ env:
 rvm:
 - 1.9.3
 before_install:
-- echo $TRAVIS_PULL_REQUEST
 - cd /usr/lib/git-core/
 - sudo wget https://raw.github.com/apenwarr/git-subtree/master/git-subtree.sh
 - sudo mv git-subtree.sh git-subtree
 - sudo chmod 755 git-subtree
-- cd $YO_HOME
-- cd backend
+- cd $YO_HOME/backend
 - sudo apt-get update -qq
 - sudo apt-get install -qq nodejs
 before_script:
+- cd $YO_HOME/backend
 - psql -c 'create database yo_test;' -U postgres
-- rake db:migrate
-- cd ../web-client
+- bundle exec rake db:migrate
+- cd $YO_HOME/web-client
 - npm install grunt --save-dev
 - npm install
-- bower install
 - sh -e /etc/init.d/xvfb start
+- bower install
 script:
-- cd ../web-client && grunt test
-- cd ../backend && bundle exec rspec && bundle exec teaspoon
-matrix:
-  allow_failures:
-  - rvm: jruby-19mode
-  - rvm: ruby-head
+- cd $YO_HOME/web-client && grunt test && $YO_HOME/backend && bundle exec rspec
 after_success:
   - cd $YO_HOME
   - ./utils/travis/deploy.sh
