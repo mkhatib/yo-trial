@@ -20,10 +20,10 @@ before_script:
 - psql -c 'create database yo_test;' -U postgres
 - bundle exec rake db:migrate
 - cd $YO_HOME/web-client
-- npm install grunt --save-dev
-- npm install
+- npm install grunt --save-dev --loglevel error
+- npm install --loglevel error
 - sh -e /etc/init.d/xvfb start
-- bower install
+- bower install --quiet
 script:
 - cd $YO_HOME/web-client && grunt test && cd $YO_HOME/backend && bundle exec rspec
 after_success:
