@@ -42,6 +42,9 @@ else
   heroku keys:clear
   yes | heroku keys:add
 
+  git config user.email "deploy-bot@manshar.me"
+  git config user.name "Manshar Deploy Bot"
+
   # Create a temp branch to deploy from.
   git checkout -b tmp-deploy
   # Un-ignoring dist for a second.
