@@ -25,7 +25,7 @@ before_script:
 - sh -e /etc/init.d/xvfb start
 - bower install --quiet
 script:
-- cd $YO_HOME/web-client && grunt test && cd $YO_HOME/backend && bundle exec rspec
+- cd $YO_HOME/web-client && grunt test
 after_success:
   - cd $YO_HOME
   - ./utils/travis/deploy.sh
